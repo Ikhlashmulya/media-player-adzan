@@ -1,15 +1,17 @@
-import { Text, View } from "react-native";
+import Header from "@/components/header";
+import MediaList from "@/components/media-list";
+import { StatusBar, View } from "react-native";
 
 export default function Index() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+    <View>
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="light-content" // atau 'dark-content' tergantung warna background kamu
+      />
+      <Header />
+      <MediaList />
     </View>
   );
 }
