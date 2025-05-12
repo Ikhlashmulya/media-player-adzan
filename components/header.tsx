@@ -1,6 +1,6 @@
 import { ImageBackground } from "react-native";
 
-export default function Header() {
+export default function Header({ height }: { height: number }) {
   const backgroundImage = require("@/assets/images/islamic-background.png");
 
   return (
@@ -10,7 +10,6 @@ export default function Header() {
         height: 300,
       }}
       source={backgroundImage}
-    >
-    </ImageBackground>
+    ></ImageBackground>
   );
 }

@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-export default function MediaList() {
+export default function MediaList({ height }: { height: number }) {
   const backgroundImage = require("@/assets/images/mosque-sketch.png");
   const mediaList = [
     { adzan: "adzan 1", muadzin: "sheikh mu ad" },
@@ -42,11 +42,7 @@ export default function MediaList() {
             >
               {item.adzan}
             </Text>
-            <Text
-              style={{
-                
-              }}
-            >{item.muadzin}</Text>
+            <Text style={{}}>{item.muadzin}</Text>
           </TouchableOpacity>
         )}
       />
