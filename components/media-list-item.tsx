@@ -1,13 +1,21 @@
+import { useAudioPlayerContext } from "@/context/audio-player-context";
 import { Adzan } from "@/types";
+import { useAudioPlayer } from "expo-audio";
 import { Image } from "expo-image";
+import { useContext, useEffect } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
 type Props = Adzan;
 
-export default function MediaListItem({
-  title,
-  muadzin,
-}: Props) {
+export default function MediaListItem({ title, muadzin, flag, sound }: Props) {
+  const {player, setPlayer} = useAudioPlayerContext();
+
+  const playerInstance = useAudioPlayer(sound);
+
+  useEffect(() => {
+    setPlayer(playerInstance);
+  }, []);
+
   return (
     <TouchableOpacity
       style={{
@@ -19,9 +27,10 @@ export default function MediaListItem({
         alignItems: "center",
         gap: 10,
       }}
+      onPress={() => player?.play()}
     >
       <Image
-        source={require("@/assets/images/saudi-flag.png")}
+        source={flag}
         style={{ width: 40, height: 40, borderRadius: 10 }}
       />
       <View>
