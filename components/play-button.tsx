@@ -24,7 +24,7 @@ export default function PlayButton() {
         margin: 10,
         position: "absolute",
         zIndex: 1,
-        top: 265,
+        top: 285,
         left: 270,
       }}
       onPress={handleOnClick}

@@ -7,7 +7,7 @@ export default function Header({ height }: { height: number }) {
     <ImageBackground
       style={{
         width: "100%",
-        height: 300,
+        height: height,
       }}
       source={backgroundImage}
     ></ImageBackground>

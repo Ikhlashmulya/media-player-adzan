@@ -8,7 +8,7 @@ export default function MediaList({ height }: { height: number }) {
     <ImageBackground
       style={{
         width: "100%",
-        height: "75%",
+        height: height,
       }}
       imageStyle={{
         opacity: 0.5,
