@@ -1,11 +1,19 @@
 import { AudioPlayer } from "expo-audio";
-import { createContext, FC, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  Dispatch,
+  FC,
+  ReactNode,
+  SetStateAction,
+  useContext,
+  useState,
+} from "react";
 
 type AudioPlayerContextType = {
   player: AudioPlayer | undefined;
-  setPlayer: React.Dispatch<React.SetStateAction<AudioPlayer | undefined>>;
+  setPlayer: Dispatch<SetStateAction<AudioPlayer | undefined>>;
   isPlaying: boolean;
-  setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsPlaying: Dispatch<SetStateAction<boolean>>;
 };
 
 const AudioPlayerContext = createContext<AudioPlayerContextType | undefined>(
@@ -19,7 +27,9 @@ export const AudioPlayerProvider: FC<{ children: ReactNode }> = ({
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
   return (
-    <AudioPlayerContext.Provider value={{ player, setPlayer, isPlaying, setIsPlaying }}>
+    <AudioPlayerContext.Provider
+      value={{ player, setPlayer, isPlaying, setIsPlaying }}
+    >
       {children}
     </AudioPlayerContext.Provider>
   );
@@ -33,4 +43,4 @@ export const useAudioPlayerContext = () => {
     );
   }
   return audioPlayerContext;
-}
+};
