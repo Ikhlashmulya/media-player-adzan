@@ -4,6 +4,8 @@ import { createContext, FC, ReactNode, useContext, useState } from "react";
 type AudioPlayerContextType = {
   player: AudioPlayer | undefined;
   setPlayer: React.Dispatch<React.SetStateAction<AudioPlayer | undefined>>;
+  isPlaying: boolean;
+  setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const AudioPlayerContext = createContext<AudioPlayerContextType | undefined>(
@@ -14,9 +16,10 @@ export const AudioPlayerProvider: FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [player, setPlayer] = useState<AudioPlayer | undefined>(undefined);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
   return (
-    <AudioPlayerContext.Provider value={{ player, setPlayer }}>
+    <AudioPlayerContext.Provider value={{ player, setPlayer, isPlaying, setIsPlaying }}>
       {children}
     </AudioPlayerContext.Provider>
   );

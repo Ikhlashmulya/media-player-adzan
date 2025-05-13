@@ -2,19 +2,26 @@ import { useAudioPlayerContext } from "@/context/audio-player-context";
 import { Adzan } from "@/types";
 import { useAudioPlayer } from "expo-audio";
 import { Image } from "expo-image";
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
 type Props = Adzan;
 
 export default function MediaListItem({ title, muadzin, flag, sound }: Props) {
-  const {player, setPlayer} = useAudioPlayerContext();
+  const { player, setPlayer, setIsPlaying, isPlaying } =
+    useAudioPlayerContext();
 
   const playerInstance = useAudioPlayer(sound);
 
   useEffect(() => {
     setPlayer(playerInstance);
   }, []);
+
+  function handleOnClick() {
+    player?.replace(sound);
+    player?.play();
+    setIsPlaying(true);
+  }
 
   return (
     <TouchableOpacity
@@ -27,7 +34,7 @@ export default function MediaListItem({ title, muadzin, flag, sound }: Props) {
         alignItems: "center",
         gap: 10,
       }}
-      onPress={() => player?.play()}
+      onPress={handleOnClick}
     >
       <Image
         source={flag}
