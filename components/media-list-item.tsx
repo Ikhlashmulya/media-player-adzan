@@ -8,7 +8,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 type Props = Adzan;
 
 export default function MediaListItem({ title, muadzin, flag, sound }: Props) {
-  const { player, setPlayer, setIsPlaying, isPlaying } =
+  const { player, setPlayer, setIsPlaying } =
     useAudioPlayerContext();
 
   const playerInstance = useAudioPlayer(sound);
@@ -49,7 +49,7 @@ export default function MediaListItem({ title, muadzin, flag, sound }: Props) {
         >
           {title}
         </Text>
-        <Text style={{}}>{muadzin}</Text>
+        <Text>{muadzin}</Text>
       </View>
     </TouchableOpacity>
   );
